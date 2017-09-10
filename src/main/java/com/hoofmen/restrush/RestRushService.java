@@ -1,8 +1,11 @@
 package com.hoofmen.restrush;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Value;
+import com.hoofmen.restrush.config.model.Configuration;
+import com.hoofmen.restrush.config.model.Entity;
+import com.hoofmen.restrush.parsers.ConfigurationParser;
+import com.hoofmen.restrush.parsers.EntityParser;
+import com.hoofmen.restrush.writers.JavaPojoWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,28 +19,29 @@ import java.nio.file.Paths;
 @Service ("rrService")
 public class RestRushService {
 
-    public void printJSON(String path) throws IOException {
+    @Autowired
+    private ConfigurationParser configurationParser;
+    @Autowired
+    private EntityParser entityParser;
+
+    @Autowired
+    private JavaPojoWriter javaPojoWriter;
+
+    public void readConfiguration(String path) throws IOException {
         byte[] jsonData = Files.readAllBytes(Paths.get(path));
-        ObjectMapper objectMapper = new ObjectMapper();
+        Configuration configuration = configurationParser.getConfiguration(new String(jsonData));
+        Entity entity = entityParser.parseEntity(configuration.getEntity());
 
-        JsonNode rootNode = objectMapper.readTree(jsonData);
-        JsonNode projectNameNode = rootNode.path("project-name");
-        JsonNode descriptionNode = rootNode.path("description");
-        System.out.println("project-name: " + projectNameNode.asText());
-        System.out.println("description: " + descriptionNode.asText());
+        // Send the details of the entity to be written into a Java file.
+        javaPojoWriter.writeToFile(entity);
     }
-
-    public String getValue(String val){
-        return "property: " + val;
-    }
-
 
     public void printUsage(){
         System.out.println("");
         System.out.println(" Welcome to REST RUSH :()");
         System.out.println(" ------------------------");
         System.out.println(" Usage:");
-        System.out.println("\tjava -jar restrush.jar <json file with the configuration>");
+        System.out.println("\tjava -jar rest-rush.jar <json file with the configuration>");
         System.out.println("");
     }
 }

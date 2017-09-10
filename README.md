@@ -22,23 +22,32 @@ You will require to first create the JSON configuration file in where you should
 E.g.
 ```json
 {
-	"project-name":"My website accounts",
-	"description":"Service that allows CRUD operations for my website accounts",
-	"java":{
-	  "version":8,
-	  "base-package":"com.mywebsite.account"
-	},
-	"maven":{
-	  "groupId":"com.mywebsite",
-      "artifactId":"rest-rush"
-	},
-	"entity": {
-		"id":"1d4f35e5-ded5-fd9b-ed15-867d35ce21bf",
-		"name":"troll_1991",
-		"latest-posts":{
-		  ...
-		}
-	}
+  "projectName":"My website accounts",
+  "description":"Service that allows CRUD operations for my website accounts",
+  "java":{
+    "version":"8",
+    "basePackage":"com.mywebsite.account"
+  },
+  "maven":{
+    "groupId":"com.mywebsite",
+    "artifactId":"rest-rush"
+  },
+  "entity": {
+    "Account": {
+      "id": "1d4f35e5-ded5-fd9b-ed15-867d35ce21bf",
+      "name": "troll_1991",
+      "latest-posts": [
+        {
+          "id": 1,
+          "title": "fake title 1"
+        },
+        {
+          "id": 2,
+          "title": "fake title 2"
+        }
+      ]
+    }
+  }
 }
 ```
 Important to notice the "entity" field, that should contain the main Entity JSON for which you're generating the service.
