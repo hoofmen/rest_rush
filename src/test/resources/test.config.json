@@ -1,4 +1,28 @@
 {
-  "project-name": "rest-rush Test Project",
-  "description": "This is a rest-rush test project"
+  "projectName":"My website accounts",
+  "description":"Service that allows CRUD operations for my website accounts",
+  "java":{
+    "version":"8",
+    "basePackage":"com.mywebsite.account"
+  },
+  "maven":{
+    "groupId":"com.mywebsite",
+    "artifactId":"rest-rush"
+  },
+  "entity": {
+    "Account": {
+      "id": "1d4f35e5-ded5-fd9b-ed15-867d35ce21bf",
+      "name": "troll_1991",
+      "latest-posts": [
+        {
+          "id": 1,
+          "title": "fake title 1"
+        },
+        {
+          "id": 2,
+          "title": "fake title 2"
+        }
+      ]
+    }
+  }
 }

@@ -1,2 +1,4 @@
 rest-rush.iml
 .idea/
+target/
+*.java

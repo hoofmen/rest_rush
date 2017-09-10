@@ -26,7 +26,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (args.length > 0) {
-            restRushService.printJSON(args[0].toString());
+            restRushService.readConfiguration(args[0].toString());
         } else {
             restRushService.printUsage();
         }

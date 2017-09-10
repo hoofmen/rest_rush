@@ -1,0 +1,13 @@
+package %s;
+
+public class %s {
+    private %s %s;
+
+    public %s get%s() {
+        return %s;
+    }
+
+    public void set%s(%s %s) {
+        this.%s = %s;
+    }
+}
