@@ -1,5 +1,5 @@
-MapChat Service (backend)
-=========================
+REST-RUSH
+==========
 
 General idea is to generate a basic entity-microservice project based on the parameters given in a JSON configuration file.
 
@@ -9,7 +9,7 @@ Generated project will use the following technologies:
 * Jackson
 
 ### Status
-[![Build Status](https://travis-ci.org/hoofmen/rest-rush.svg?branch=master)](https://github.com/hoofmen/rest-rush)
+[![Build Status](https://travis-ci.org/hoofmen/rest_rush.svg?branch=master)](https://github.com/hoofmen/rest_rush)
 
 ### Relevant Development Tools
 * Java 8
