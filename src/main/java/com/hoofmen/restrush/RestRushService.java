@@ -31,6 +31,7 @@ public class RestRushService {
         byte[] jsonData = Files.readAllBytes(Paths.get(path));
         Configuration configuration = configurationParser.getConfiguration(new String(jsonData));
         Entity entity = entityParser.parseEntity(configuration.getEntity());
+        entity.setPackageName(configuration.getJava().getBasePackage());
 
         // Send the details of the entity to be written into a Java file.
         javaPojoWriter.writeToFile(entity);
@@ -38,7 +39,7 @@ public class RestRushService {
 
     public void printUsage(){
         System.out.println("");
-        System.out.println(" Welcome to REST RUSH :()");
+        System.out.println(" Welcome to REST-RUSH :()");
         System.out.println(" ------------------------");
         System.out.println(" Usage:");
         System.out.println("\tjava -jar rest-rush.jar <json file with the configuration>");
