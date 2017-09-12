@@ -7,7 +7,7 @@ public class Entity {
     private String packageName;
     private List<String> imports;
     private String className;
-    private Map<String, String> attributesMap;
+    private Map<String, Entity> attributesMap;
 
     public String getPackageName() {
         return packageName;
@@ -33,11 +33,11 @@ public class Entity {
         this.className = className;
     }
 
-    public Map<String, String> getAttributesMap() {
+    public Map<String, Entity> getAttributesMap() {
         return attributesMap;
     }
 
-    public void setAttributesMap(Map<String, String> attributesMap) {
+    public void setAttributesMap(Map<String, Entity> attributesMap) {
         this.attributesMap = attributesMap;
     }
 }

@@ -21,46 +21,22 @@ public class JavaPojoWriter {
         printWriter.printf(Constants.CLASS_LINE,entity.getClassName());
 
         // print the attribute section of the class
-        for (Map.Entry<String,String> attribute : entity.getAttributesMap().entrySet()){
-            printWriter.printf(Constants.ATTRIBUTE_LINE,this.getJavaType(attribute.getValue()), attribute.getKey());
+        for (Map.Entry<String,Entity> attribute : entity.getAttributesMap().entrySet()){
+            printWriter.printf(Constants.ATTRIBUTE_LINE,attribute.getValue().getClassName(), attribute.getKey());
         }
         printWriter.print(Constants.NEW_LINE);
 
         // print the setter/getter of the class
-        for (Map.Entry<String,String> attribute : entity.getAttributesMap().entrySet()){
-            printWriter.printf(Constants.SETTER_METHOD_LINE, attribute.getKey(), this.getJavaType(attribute.getValue()), attribute.getKey());
+        for (Map.Entry<String,Entity> attribute : entity.getAttributesMap().entrySet()){
+            printWriter.printf(Constants.SETTER_METHOD_LINE, attribute.getKey(), attribute.getValue().getClassName(), attribute.getKey());
             printWriter.printf(Constants.SET_ACTION_LINE, attribute.getKey(), attribute.getKey());
             printWriter.print(Constants.TAB + Constants.CLOSE_CURLY_BRACKET);
 
-            printWriter.printf(Constants.GETTER_METHOD_LINE,this.getJavaType(attribute.getValue()), attribute.getKey());
+            printWriter.printf(Constants.GETTER_METHOD_LINE,attribute.getValue().getClassName(), attribute.getKey());
             printWriter.printf(Constants.GET_ACTION_LINE, attribute.getKey());
             printWriter.print(Constants.TAB + Constants.CLOSE_CURLY_BRACKET);
         }
         printWriter.print(Constants.CLOSE_CURLY_BRACKET);
         printWriter.close();
-    }
-
-    /*
-     Json Types:
-     ARRAY,
-     BINARY,
-     BOOLEAN,
-     MISSING,
-     NULL,
-     NUMBER,
-     OBJECT,
-     POJO,
-     STRING;
-
-     */
-    private String getJavaType(String jsonType){
-        switch (jsonType){
-            case "STRING":
-                return "String";
-            case "NUMBER":
-                return "Integer";
-            default:
-                return "Object";
-        }
     }
 }

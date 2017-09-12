@@ -13,6 +13,13 @@
     "Account": {
       "id": "1d4f35e5-ded5-fd9b-ed15-867d35ce21bf",
       "name": "troll_1991",
+      "attempts": 3,
+      "pi": 3.14,
+      "active": true,
+      "address": {
+        "city": "San Francisco",
+        "zip": 94107
+      },
       "latest-posts": [
         {
           "id": 1,
